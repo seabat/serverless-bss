@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
+import com.google.android.material.tabs.TabLayoutMediator
 import dev.seabat.android.serverlessbbs.databinding.FragmentHomeBinding
 import dev.seabat.android.serverlessbss.ui.pager.ThreadListFragment
 import dev.seabat.android.serverlessbss.ui.pager.ThreadListFragment.Companion.ARG_OBJECT
@@ -35,6 +36,9 @@ class HomeFragment : Fragment() {
 
         return root
     }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        this.setupTab(binding)
+    }
 
     override fun onDestroyView() {
         super.onDestroyView()
@@ -45,6 +49,17 @@ class HomeFragment : Fragment() {
         viewPageAdapter = HomeViewPagerAdapter(this)
         viewPager = binding.pager
         viewPager.adapter = viewPageAdapter
+    }
+
+    private fun setupTab(binding: FragmentHomeBinding) {
+        TabLayoutMediator(binding.tabLayout, binding.pager) { tab, position ->
+            tab.text = when (position) {
+                0 -> "All"
+                1 -> "Unread"
+                2 -> "Follow"
+                else -> ""
+            }
+        }.attach()
     }
 }
 
