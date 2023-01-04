@@ -3,18 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="app/src/main/res/drawable/tab_selector.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.13728470111448834" />
-        <entry key="app/src/main/res/layout/app_bar_main.xml" value="0.13728470111448834" />
-        <entry key="app/src/main/res/layout/content_main.xml" value="0.13044579533941236" />
-        <entry key="app/src/main/res/layout/fragment_all_thread_list.xml" value="0.13728470111448834" />
-        <entry key="app/src/main/res/layout/fragment_bss_thread_list.xml" value="0.365036231884058" />
-        <entry key="app/src/main/res/layout/fragment_gallery.xml" value="0.13728470111448834" />
-        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.13728470111448834" />
-        <entry key="app/src/main/res/layout/fragment_slideshow.xml" value="0.13728470111448834" />
+        <entry key="app/src/main/res/layout/card_bbs_thread.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_bbs_thread_list.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/nav_header_main.xml" value="0.13728470111448834" />
-        <entry key="app/src/main/res/menu/activity_main_drawer.xml" value="0.2639455782312925" />
       </map>
     </option>
   </component>
