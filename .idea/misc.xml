@@ -3,8 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="app/src/main/res/layout/card_bbs_thread.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/fragment_bbs_thread_list.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/card_bbs_thread.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_bbs_thread_list.xml" value="0.25" />
       </map>
     </option>
   </component>

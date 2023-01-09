@@ -7,9 +7,11 @@
     android:layout_height="170dp"
     android:layout_marginLeft="15dp"
     android:layout_marginRight="15dp"
+    android:layout_marginTop="5dp"
+    android:layout_marginBottom="5dp"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@id/text_bbs_thread_list"
+    app:layout_constraintTop_toTopOf="parent"
     app:cardCornerRadius="15dp">
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -57,18 +59,18 @@
         </LinearLayout>
 
         <TextView
-            android:id="@+id/text1"
+            android:id="@+id/text_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:minWidth="100dp"
             android:text="タイトル"
             android:textAlignment="viewStart"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            app:layout_constraintStart_toStartOf="@id/text2"
+            app:layout_constraintStart_toStartOf="@id/text_detail"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/text2"
+            android:id="@+id/text_detail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ellipsize="end"
@@ -79,21 +81,21 @@
             android:textAlignment="viewStart"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/text1" />
+            app:layout_constraintTop_toBottomOf="@id/text_title" />
 
         <TextView
-            android:id="@+id/text3"
+            android:id="@+id/text_create_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:minWidth="200dp"
             android:text="作成日 2022/10/02"
             android:textAlignment="viewStart"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            app:layout_constraintBottom_toTopOf="@id/text4"
-            app:layout_constraintStart_toStartOf="@id/text2" />
+            app:layout_constraintBottom_toTopOf="@id/text_edit_date"
+            app:layout_constraintStart_toStartOf="@id/text_detail" />
 
         <TextView
-            android:id="@+id/text4"
+            android:id="@+id/text_edit_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:minWidth="200dp"
@@ -101,6 +103,6 @@
             android:textAlignment="viewStart"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="@id/text2" />
+            app:layout_constraintStart_toStartOf="@id/text_detail" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

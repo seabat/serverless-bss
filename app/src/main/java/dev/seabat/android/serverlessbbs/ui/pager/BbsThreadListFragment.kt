@@ -6,7 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import dev.seabat.android.serverlessbbs.data.BbsThread
 import dev.seabat.android.serverlessbbs.databinding.FragmentBbsThreadListBinding
+import dev.seabat.android.serverlessbbs.ui.list.BbsThreadListAdapter
 
 class BbsThreadListFragment : Fragment() {
     companion object {
@@ -27,10 +30,27 @@ class BbsThreadListFragment : Fragment() {
             ViewModelProvider(this).get(BbsThreadListViewModel::class.java)
 
         _binding = FragmentBbsThreadListBinding.inflate(inflater, container, false)
+
         val root: View = binding.root
 
-        viewModel.text.observe(viewLifecycleOwner) {
-            binding.textBbsThreadList.text = it
+        // BBSスレッドリストの初期化
+        binding.listThread.also {
+            it.layoutManager = LinearLayoutManager(context).apply {
+                orientation = LinearLayoutManager.VERTICAL
+            }
+            it.adapter = BbsThreadListAdapter {
+                    bbsThread -> onAdapterClick(bbsThread)
+            }
+        }
+
+        // LiveData の observe をセット
+        viewModel.also {
+            it.text.observe(viewLifecycleOwner) { text ->
+                binding.textBbsThreadList.text = text
+            }
+            it.bbsThreadList.observe(viewLifecycleOwner) { list ->
+                (binding.listThread.adapter as BbsThreadListAdapter).submitList(list as MutableList<BbsThread>)
+            }
         }
 
         return root
@@ -47,6 +67,10 @@ class BbsThreadListFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null // see. https://developer.android.com/topic/libraries/view-binding?hl=ja#fragments
+    }
+
+    private fun onAdapterClick(bbsThread: BbsThread) {
+
     }
 }
 
