@@ -1,11 +1,11 @@
-package dev.seabat.android.serverlessbss.ui.pager
+package dev.seabat.android.serverlessbbs.ui.pager
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class ThreadListViewModel : ViewModel() {
+class BbsThreadListViewModel : ViewModel() {
     private val _text = MutableLiveData<String>().apply {
-        value = "This is A Thread List Fragment"
+        value = "This is A Bbs thread List Fragment"
     }
     val text get() = _text
 
