@@ -2,25 +2,24 @@ package dev.seabat.android.serverlessbbs.ui.pager
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import dev.seabat.android.serverlessbbs.data.BbsThread
+import dev.seabat.android.serverlessbbs.data.repo.BbsThreadRepository
+import kotlinx.coroutines.launch
 
 class BbsThreadListViewModel : ViewModel() {
+    private val bbsThreadListRepository: BbsThreadRepository = BbsThreadRepository()
     private val _text = MutableLiveData<String>().apply {
         value = "This is A Bbs thread List Fragment"
     }
     val text get() = _text
 
-    private val _bbsThreadList = MutableLiveData<List<BbsThread>>().apply {
-        //TODO: DataSource からデータを取得する
-        value = listOf(
-            BbsThread(true, true, true, "タイトル1", "詳細1", "2022/12/03", "2022/12/22"),
-            BbsThread(false, true, true, "タイトル2", "詳細2", "2022/12/04", "2022/12/23"),
-            BbsThread(false, false, true, "タイトル3", "詳細3", "2022/12/05", "2022/12/24"),
-            BbsThread(false, true, true, "タイトル4", "詳細4", "2022/12/06", "2022/12/25")
-        )
-    }
+    private val _bbsThreadList = MutableLiveData<List<BbsThread>>()
     val bbsThreadList get() = _bbsThreadList
 
+    init {
+        fetchAllBbsThreadList()
+    }
 
     private fun addBbsThread(bbsThread: BbsThread) {
         // TODO: DataSource に bbsThread を追加
@@ -37,6 +36,14 @@ class BbsThreadListViewModel : ViewModel() {
     private fun replaceBbsThreadList(bbsThreadList: List<BbsThread>) {
         // TODO: DataSource に bbsThread を追加
         this.bbsThreadList.postValue(bbsThreadList)
+    }
+
+    private fun fetchAllBbsThreadList() {
+        viewModelScope.launch {
+            bbsThreadListRepository.fetch().collect {
+                this@BbsThreadListViewModel._bbsThreadList.postValue(it)
+            }
+        }
     }
 
     fun updateText(text : String) {
