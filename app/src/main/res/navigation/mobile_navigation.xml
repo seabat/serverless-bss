@@ -7,19 +7,19 @@
 
     <fragment
         android:id="@+id/nav_home"
-        android:name="dev.seabat.android.serverlessbbs.ui.home.HomeFragment"
+        android:name="dev.seabat.android.serverlessbbs.ui.screen.home.HomeFragment"
         android:label="@string/menu_home"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/nav_gallery"
-        android:name="dev.seabat.android.serverlessbbs.ui.gallery.GalleryFragment"
+        android:name="dev.seabat.android.serverlessbbs.ui.screen.gallery.GalleryFragment"
         android:label="@string/menu_gallery"
         tools:layout="@layout/fragment_gallery" />
 
     <fragment
         android:id="@+id/nav_slideshow"
-        android:name="dev.seabat.android.serverlessbbs.ui.slideshow.SlideshowFragment"
+        android:name="dev.seabat.android.serverlessbbs.ui.screen.slideshow.SlideshowFragment"
         android:label="@string/menu_slideshow"
         tools:layout="@layout/fragment_slideshow" />
 </navigation>
