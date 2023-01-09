@@ -6,10 +6,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import dev.seabat.android.serverlessbbs.R
 import dev.seabat.android.serverlessbbs.data.BbsThread
 import dev.seabat.android.serverlessbbs.databinding.FragmentBbsThreadListBinding
+import dev.seabat.android.serverlessbbs.ui.screen.bbs_thread.BbsThreadDetailFragment.Companion.ARG_BBS_THREAD_ID
 import dev.seabat.android.serverlessbbs.ui.list.BbsThreadListAdapter
+
 
 class BbsThreadListFragment : Fragment() {
     companion object {
@@ -70,7 +74,10 @@ class BbsThreadListFragment : Fragment() {
     }
 
     private fun onAdapterClick(bbsThread: BbsThread) {
-
+        val bundle = Bundle().also {
+            it.putString(ARG_BBS_THREAD_ID, bbsThread.text_title)
+        }
+        this.findNavController().navigate(R.id.action_navHome_to_bbsThreadDetail, bundle)
     }
 }
 
