@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -48,12 +50,18 @@ class BbsThreadListFragment : Fragment() {
         }
 
         // LiveData の observe をセット
-        viewModel.also {
+        viewModel.also { it ->
             it.text.observe(viewLifecycleOwner) { text ->
                 binding.textBbsThreadList.text = text
             }
             it.bbsThreadList.observe(viewLifecycleOwner) { list ->
                 (binding.listThread.adapter as BbsThreadListAdapter).submitList(list as MutableList<BbsThread>)
+            }
+            it.isProgressBarVisible.observe(viewLifecycleOwner) { isVisible ->
+                binding.progressbar.isVisible = isVisible
+            }
+            it.toastMessage.observe(viewLifecycleOwner) { message ->
+                if (message.isNotEmpty()) Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
             }
         }
 

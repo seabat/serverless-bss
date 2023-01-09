@@ -1,18 +1,21 @@
 package dev.seabat.android.serverlessbbs.data.repo
 
 import dev.seabat.android.serverlessbbs.data.BbsThread
+import dev.seabat.android.serverlessbbs.data.BbsThreadResult
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow
+import java.lang.Exception
 
 class BbsThreadRepository {
-    suspend fun fetch(): Flow<List<BbsThread>> {
+    suspend fun fetch(): Flow<BbsThreadResult<List<BbsThread>>> {
         return flow {
+            this.emit(BbsThreadResult.Loading(true))
             val response = this@BbsThreadRepository.loadLocalDataStore()
-            emit(response)
+            this.emit(BbsThreadResult.Success(response))
         }.catch { e ->
-            emit(listOf<BbsThread>())
+            this.emit(BbsThreadResult.Failure(e.message ?: "Unknown Error"))
         }
     }
 
